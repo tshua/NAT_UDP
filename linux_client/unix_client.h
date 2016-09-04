@@ -50,9 +50,9 @@ class UnixClient
 				}
 				else if(size == -3)//回复ack的时候，设置连接对象
 				{
-					connectedUser = messageParser.getUserByIP(ntohl(sock.get_remoteaddr.sin_addr.s_addr));
+					connectedUser = messageParser.getUserByIP(ntohl(sock.get_remoteaddr().sin_addr.s_addr));
 					size = sizeof(unsigned char);
-					sock.send();
+					sock.send(size);
 				}
 				else if(size < 0)
 				{
@@ -144,7 +144,7 @@ class UnixClient
 				stUserInfo* user = messageParser.getUserByName(commond.c_str());
 				if(user)
 				{
-					char message[10] = "punch data";
+					char message[20] = "punch data";
 					if(sendMessage(commond.c_str(), message))
 					{
 						connectedUser = user;
