@@ -91,7 +91,7 @@ class Sock
 
 	int recv()
 	{
-		unsigned int nLen = sizeof(remoteaddr);
+		int nLen = sizeof(remoteaddr);
 		recv_num = recvfrom(sockfd, recvBuf , MAX_PACKET_SIZE, 0, (sockaddr*)&remoteaddr,&nLen);
 		//cout<< ntohs(remoteaddr.sin_port) <<endl;
 		//cout<< remoteaddr.sin_addr.s_addr <<endl;
