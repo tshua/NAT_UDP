@@ -48,6 +48,12 @@ class UnixClient
 				{
 					recvACK = true;
 				}
+				else if(size == -3)//回复ack的时候，设置连接对象
+				{
+					connectedUser = messageParser.getUserByIP(ntohl(sock.get_remoteaddr.sin_addr.s_addr));
+					size = sizeof(unsigned char);
+					sock.send();
+				}
 				else if(size < 0)
 				{
 					cout<< "client error" <<endl;
@@ -121,20 +127,24 @@ class UnixClient
 			}
 			else if(commond == "p")
 			{
+				sock.get_remoteaddr().sin_family = AF_INET;
+				sock.get_remoteaddr().sin_port = htons(SERVER_PORT);
+				sock.get_remoteaddr().sin_addr.s_addr = inet_addr(SERVER_IP);
+
 				memset(sock.sendBuf, 0, MAX_PACKET_SIZE);
 				stMsg* sendmsg = (stMsg*) sock.sendBuf;
 				sendmsg->msgType = CMD_USERLIST_REQU;
 				sock.send(sizeof(unsigned char));
 
 				sleep(1);// 等待接收线程打印在线用户
-				
+
 			}
 			else
 			{
 				stUserInfo* user = messageParser.getUserByName(commond.c_str());
 				if(user)
 				{
-					char message[10] = "abc";
+					char message[10] = "punch data";
 					if(sendMessage(commond.c_str(), message))
 					{
 						connectedUser = user;
@@ -150,7 +160,7 @@ class UnixClient
 
 					if(connectedUser)
 					{
-						sendMessage(connectedUser->userName, commond.c_str());		
+						sendMessage(connectedUser->userName, commond.c_str());
 					}
 					else
 						cout << "command error, input once more!" <<endl;

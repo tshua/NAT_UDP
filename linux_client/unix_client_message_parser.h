@@ -141,7 +141,7 @@ class UnixClientMessageParser
 					}
 				case MESSAGE_PUNCH:
 					{
-						//忽略对方的打洞包
+						//对方忽略打洞包
 						cout<< "recv punch data !" <<endl;
 						cout<< "connect is build !" <<endl;
 						return 0;
@@ -162,7 +162,7 @@ class UnixClientMessageParser
 						memset(sendBuf, 0, MAX_PACKET_SIZE);
 						stMsg* sendmsg = (stMsg*) sendBuf;
 						sendmsg->msgType = MESSAGE_ACK;
-						return sizeof(unsigned char);
+						return -3;//sizeof(unsigned char);
 					}
 
 			}
