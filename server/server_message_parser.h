@@ -78,7 +78,7 @@ class ServerMessageParser
 						currentUser->userIP = ntohl(remoteaddr->sin_addr.s_addr); //转换成主机字节序存储
 						currentUser->userPort = ntohs(remoteaddr->sin_port);
 						clientList.push_back(currentUser);                       //do not exclude same name user
-						return 0;
+						return -2;
 						
 					}
 				case CMD_LOGOUT:

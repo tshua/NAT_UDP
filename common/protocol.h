@@ -30,7 +30,7 @@ using namespace std;
 #define CMD_USERLIST_RESP 	0x04 	//服务器->客户端  用户列表应答
 #define CMD_PUNCH_REQU 		0x05 	//客户端->服务器  请求服务器命令某个客户端发送打洞包
 #define CMD_SOMEONEWANTTOCALLYOU   0x06  	//服务器->客户端  要求次客户端发送udp打洞包
-
+#define CMD_USERLIST_RESP_QUIET    0x10  //服务器->客户端  	后台更新用户列表，不显示
 
 #define MESSAGE 		0x07 	//客户端->客户端  发送消息
 #define MESSAGE_ACK 		0x08 	//客户端->客户端  收到消息的应答

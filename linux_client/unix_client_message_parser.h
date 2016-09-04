@@ -164,6 +164,23 @@ class UnixClientMessageParser
 						sendmsg->msgType = MESSAGE_ACK;
 						return -3;//sizeof(unsigned char);
 					}
+				case CMD_USERLIST_RESP_QUIET:
+					{
+						unsigned int usernum = recvmsg->userList.userNums;
+						clientList.clear();
+						//cout<< "online hosts:" <<endl;
+
+						for(unsigned int i = 0; i < usernum; i++)
+						{
+							stUserInfo* user = new stUserInfo();
+							memcpy(user->userName, recvmsg->userList.users[i].userName, MAX_NAME_SIZE);
+							user->userIP = recvmsg->userList.users[i].userIP;
+							user->userPort = recvmsg->userList.users[i].userPort;
+						//	cout<< user->userName <<endl;
+							clientList.push_back(user);
+						}
+						return 0;
+					}
 
 			}
 			return 0;
