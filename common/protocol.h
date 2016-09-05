@@ -1,16 +1,6 @@
 #ifndef H_PROTOCOL_H
 #define H_PROTOCOL_H
 
-#include <string.h>
-#include <unistd.h>
-#include <list>
-#include <iostream>
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-using namespace std;
 
 #define SERVER_PORT 	8000
 #define SERVER_IP 	"45.78.43.221"

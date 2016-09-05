@@ -1,0 +1,1 @@
+client = main.o unix_client.o unix_client_message_parser.o

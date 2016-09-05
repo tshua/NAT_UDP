@@ -1,0 +1,1 @@
+unix_common = sock.o

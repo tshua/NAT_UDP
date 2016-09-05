@@ -1,0 +1,1 @@
+server = main.o server.o server_message_parser.o

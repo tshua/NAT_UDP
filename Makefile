@@ -1,11 +1,20 @@
-CC = g++
+CC = gcc
+CXX = g++
 CFLAGS = -Wall
-SERVER = ./server/server.cpp
-LINUX_CLIENT = ./linux_client/unix_client.cpp
+CXXFLAGS = $(CFLAGS)
 
-all:
-	$(CC) $(CFLAGS) $(SERVER) -o s
-	$(CC) $(CFLAGS) $(LINUX_CLIENT) -o c -lpthread
+include common/Makefile
+include unix_client/Makefile
+include unix_server/Makefile
 
-clean:
-	rm -vf s c
+
+unix_client:$(client) $(common)
+	CXX -o unix_client $(client) $(common)
+unix_server:$(server) $(common)
+	CXX -o unix_server $(server) $(common)
+
+all:unix_client unix_server
+
+
+
+
