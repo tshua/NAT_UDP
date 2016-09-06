@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\..\..\common\;..\..\..\..\common\windows;$(IncludePath)</IncludePath>
-    <SourcePath>..\..\..\..\common\;..\..\..\..\common\windows;$(SourcePath)</SourcePath>
+    <IncludePath>..\..\..\..\common\;..\..\..\..\common\windows;..\include\;$(IncludePath)</IncludePath>
+    <SourcePath>..\..\..\..\common\;..\..\..\..\common\windows;..\src\;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -84,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\common\windows\WinSock.cpp" />
-    <ClCompile Include="NAT_UDP_Client.cpp" />
+    <ClCompile Include="..\src\NAT_UDP_Client.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,7 @@
 #ifndef H_PROTOCOL_H
 #define H_PROTOCOL_H
 
+#include <list>
 
 #define SERVER_PORT 	8000
 #define SERVER_IP 	"45.78.43.221"
@@ -82,7 +83,7 @@ struct stMsg
 };
 
 
-typedef list<stUserInfo*> UserList;
-typedef list<stUserInfo*>::iterator UserList_Iter;
+typedef std::list<stUserInfo*> UserList;
+typedef std::list<stUserInfo*>::iterator UserList_Iter;
 
 #endif

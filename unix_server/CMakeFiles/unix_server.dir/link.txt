@@ -1,0 +1,1 @@
+/usr/bin/c++.exe    -Wl,--enable-auto-import CMakeFiles/unix_server.dir/main.cpp.o CMakeFiles/unix_server.dir/server.cpp.o CMakeFiles/unix_server.dir/server_message_parser.cpp.o  -o unix_server.exe -Wl,--out-implib,libunix_server.dll.a -Wl,--major-image-version,0,--minor-image-version,0  ../common/libcommon.a 

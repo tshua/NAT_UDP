@@ -11,14 +11,17 @@ int WinSock::ref_count = 0;
 class WinSock
 {
 public:
+	typedef enum{ TCP, UDP } Protocol;
+
 	WinSock();
-	int Bind(string addr, string port);
-	int Connect(string addr, string port);
+	int Bind(string addr, string port, Protocol proto);
+	int Connect(string addr, string port, Protocol proto);
 	int Listen(int que_len);
 	WinSock Accept(void);
 	int Send(const char *buf, size_t size);
 	int Receive(char *buf, size_t size);
 	virtual ~WinSock();
+
 private:
 	WSADATA wsaData;
 	SOCKET Socket = INVALID_SOCKET;
