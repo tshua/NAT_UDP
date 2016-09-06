@@ -1,7 +1,6 @@
-#ifndef H_PROTOCOL_H
-#define H_PROTOCOL_H
+#ifndef _PROTOCOL_H_
+#define _PROTOCOL_H_
 
-#include <list>
 
 #define SERVER_PORT 	8000
 #define SERVER_IP 	"45.78.43.221"
@@ -26,8 +25,6 @@
 #define MESSAGE 		0x07 	//客户端->客户端  发送消息
 #define MESSAGE_ACK 		0x08 	//客户端->客户端  收到消息的应答
 #define MESSAGE_PUNCH 		0x09 	//客户端->客户端  打洞包，接受端不处理
-
-//#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
 
 //用户信息
 struct stUserInfo
@@ -82,7 +79,7 @@ struct stMsg
 	};
 };
 
-
+#include <list>
 typedef std::list<stUserInfo*> UserList;
 typedef std::list<stUserInfo*>::iterator UserList_Iter;
 

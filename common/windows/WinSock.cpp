@@ -5,6 +5,8 @@
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
+int WinSock::ref_count = 0;
+
 WinSock::WinSock()
 {
 	if (ref_count++ == 0)
@@ -46,7 +48,7 @@ int WinSock::Bind(string addr, string port, Protocol proto)
 		return 1;
 	}
 	// Resolve the address and port
-	iResult = getaddrinfo(addr.c_str, port.c_str, &hints, &result);
+	iResult = getaddrinfo(addr.c_str(), port.c_str(), &hints, &result);
 	if (iResult != 0)
 	{
 		printf("getaddrinfo failed with error: %d\n", iResult);
@@ -80,7 +82,7 @@ int WinSock::Connect(string addr, string port, Protocol proto)
 	hints.ai_socktype = SOCK_DGRAM;
 	hints.ai_protocol = IPPROTO_UDP;
 	// Resolve the server address and port
-	iResult = getaddrinfo(addr.c_str, port.c_str, &hints, &result);
+	iResult = getaddrinfo(addr.c_str(), port.c_str(), &hints, &result);
 	if (iResult != 0) 
 	{
 		printf("getaddrinfo failed with error: %d\n", iResult);

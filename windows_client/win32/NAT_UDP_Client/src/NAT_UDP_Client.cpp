@@ -1,11 +1,9 @@
-// NAT_UDP_Client.cpp : Defines the entry point for the console application.
-//
 
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "WinSock.h"
 #include "protocol.h"
+#include <iostream>
+
 using namespace std;
 
 int __cdecl main(int argc, char **argv)

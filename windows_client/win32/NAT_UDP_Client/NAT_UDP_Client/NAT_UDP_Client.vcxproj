@@ -79,10 +79,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\common\protocol.h" />
+    <ClInclude Include="..\..\..\..\common\windows\NetDaemon.h" />
     <ClInclude Include="..\..\..\..\common\windows\WinSock.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\common\windows\NetDaemon.cpp" />
     <ClCompile Include="..\..\..\..\common\windows\WinSock.cpp" />
     <ClCompile Include="..\src\NAT_UDP_Client.cpp" />
   </ItemGroup>

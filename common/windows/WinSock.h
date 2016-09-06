@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 
-int WinSock::ref_count = 0;
+
 class WinSock
 {
 public:

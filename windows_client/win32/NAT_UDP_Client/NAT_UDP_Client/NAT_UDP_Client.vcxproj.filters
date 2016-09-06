@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\common\protocol.h">
+    <ClInclude Include="..\..\..\..\common\windows\WinSock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\common\windows\WinSock.h">
+    <ClInclude Include="..\..\..\..\common\windows\NetDaemon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -27,6 +27,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\NAT_UDP_Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\common\windows\NetDaemon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
