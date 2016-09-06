@@ -1,2 +1,0 @@
-/usr/bin/ar.exe qc libcommon.a  unix/CMakeFiles/unix.dir/sock.cpp.o
-/usr/bin/ranlib.exe libcommon.a

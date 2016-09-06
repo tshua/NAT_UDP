@@ -1,2 +1,0 @@
-/usr/bin/ar.exe qc libunix.a  CMakeFiles/unix.dir/sock.cpp.o
-/usr/bin/ranlib.exe libunix.a
