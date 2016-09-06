@@ -1,4 +1,4 @@
-#ifndef _PROTOCOL_H_
+﻿#ifndef _PROTOCOL_H_
 #define _PROTOCOL_H_
 
 
