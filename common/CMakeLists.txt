@@ -1,0 +1,7 @@
+if (${CMAKE_HOST_SYSTEM_NAME} STREQUAL Linux OR ${CMAKE_HOST_SYSTEM_NAME} STREQUAL MSYS)
+add_subdirectory(unix)
+add_library(common STATIC $<TARGET_OBJECTS:unix>)
+elseif (${CMAKE_HOST_SYSTEM_NAME} STREQUAL Windows)
+add_subdirectory(windows)
+add_library(common STATIC $<TARGET_OBJECTS:windows>)
+endif ()
