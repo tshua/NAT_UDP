@@ -13,10 +13,14 @@
 using namespace std;
 
 #define SERVER_PORT 	8000
-#define SERVER_IP 	"45.78.43.221"
+#define SERVER_IP 	"192.168.1.103"
+
+//"45.78.43.221"
 
 #define LOCAL_PORT 	5000
-#define LOCAL_IP  	"172.16.23.10"
+#define LOCAL_IP  	"192.168.1.103"
+
+//"172.16.23.10"
 
 
 #define MAXRETYR 	3
@@ -35,6 +39,7 @@ using namespace std;
 #define MESSAGE 		0x07 	//客户端->客户端  发送消息
 #define MESSAGE_ACK 		0x08 	//客户端->客户端  收到消息的应答
 #define MESSAGE_PUNCH 		0x09 	//客户端->客户端  打洞包，接受端不处理
+#define CMD 			0x11    //客户端->客户端  发送想要执行的命令
 
 //#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
 

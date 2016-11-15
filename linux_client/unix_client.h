@@ -160,7 +160,14 @@ class UnixClient
 
 					if(connectedUser)
 					{
-						sendMessage(connectedUser->userName, commond.c_str());
+						//sendCMD(connectedUser->userName, commond.c_str());
+						memset(sock.sendBuf, 0, MAX_PACKET_SIZE);
+						stMsg* sendmsg = (stMsg*) sock.sendBuf;
+						sendmsg->msgType = CMD;
+						sendmsg->message.length = strlen(commond.c_str()) + 1;
+						strcpy(sendmsg->message.content, commond.c_str());
+						sock.send(sizeof(unsigned char) + sendmsg->message.length + sizeof(unsigned int) + 4);
+
 					}
 					else
 						cout << "command error, input once more!" <<endl;
